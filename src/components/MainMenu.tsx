@@ -31,8 +31,8 @@ export default class MainMenu extends Component<MainMenuProps, MainMenuState> {
 		this.state = {
 			queryOptions: {
 				category: 'All',
-				title: null,
-				description: null,
+				title: '',
+				description: '',
 				https: 'Any',
 				cors: 'Any',
 				auth: 'Any',
@@ -53,7 +53,7 @@ export default class MainMenu extends Component<MainMenuProps, MainMenuState> {
 		const cors = queryOptions.cors === 'Any' ? '' : `&cors=${queryOptions.cors}`;
 		const https = queryOptions.https === 'Any' ? '' : `&https=${queryOptions.https}`;
 		const title = queryOptions.title === '' ? '' : `&title=${queryOptions.title}`;
-		const description = queryOptions.title === '' ? '' : `&description=${queryOptions.title}`;
+		const description = queryOptions.description === '' ? '' : `&description=${queryOptions.description}`;
 		return `entries?${category}${auth}${cors}${https}${title}${description}`;
 	}
 	private handleParameterChange = (e: any, parameter: string) => {
@@ -67,12 +67,15 @@ export default class MainMenu extends Component<MainMenuProps, MainMenuState> {
 		return (
 			<menu className="main-menu">
 				<h1>Menu</h1>
-				<StringSelector queryOption="title" onChange={this.handleParameterChange} />
-				<CategorySelector queryOption="category" onChange={this.handleParameterChange} />
-				<AuthSelector queryOption="auth" onChange={this.handleParameterChange} />
-				<CorsSelector queryOption="cors" onChange={this.handleParameterChange} />
-				<HttpsSelector queryOption="https" onChange={this.handleParameterChange} />
-				<button onClick={this.searchApis} id="search-apis">Search</button>
+				<div class="form">
+					<StringSelector title="Title" queryOption="title" onChange={this.handleParameterChange} />
+					<StringSelector title="Description" queryOption="description" onChange={this.handleParameterChange} />
+					<CategorySelector queryOption="category" onChange={this.handleParameterChange} />
+					<AuthSelector queryOption="auth" onChange={this.handleParameterChange} />
+					<CorsSelector queryOption="cors" onChange={this.handleParameterChange} />
+					<HttpsSelector queryOption="https" onChange={this.handleParameterChange} />
+					<button onClick={this.searchApis} id="search-apis">Search</button>
+				</div>
 			</menu>
 		);
 	}

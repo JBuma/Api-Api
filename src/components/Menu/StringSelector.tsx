@@ -4,6 +4,7 @@ interface HttpsSelectorState {
 	stringValue: string;
 }
 interface HttpsSelectorProps {
+	title: string;
 	queryOption: string;
 	onChange: (e: any, parameter: string) => void;
 }
@@ -21,7 +22,7 @@ export default class HttpsSelector extends Component<HttpsSelectorProps, HttpsSe
 	public render() {
 		return (
 			<div className="form-group">
-				<label for="cors-select">Title</label>
+				<label for="cors-select">{this.props.title}</label>
 				<input
 					onChange={(e: Event) => {
 						this.props.onChange(e, this.props.queryOption);

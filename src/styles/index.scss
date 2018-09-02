@@ -49,10 +49,13 @@ body {
     .api-list {
       flex-grow: 3;
     }
+  }
 
-    // .main-menu {
-    //   // max-width: 300px;
-    // }
+  .form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: baseline;
+    // align-items: center;
   }
 
   @media screen and (max-width:650px) {
@@ -63,6 +66,26 @@ body {
         max-width: none;
         width: 100%;
         height: auto;
+
+        .form {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: center;
+
+          #search-apis {
+            flex-basis: 100%;
+            width: 100%;
+          }
+
+          .form-group {
+            // width: 40%;
+            min-width: 200px;
+            flex-basis: 45%;
+            flex-grow: 1;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
+          }
+        }
       }
     }
   }
@@ -103,6 +126,13 @@ body {
       height: auto;
     }
   }
+
+  // .form-group {
+  //   width: 45%;
+  //   float: left;
+  //   margin-left: 2.5%;
+  //   margin-right: 2.5%;
+  // }
 }
 
 /*
@@ -146,12 +176,12 @@ a.button {
   textarea {
     width: 100%;
     background-color: $color--text__dark;
-  }
-
-  input,
-  select {
     padding: $spacing--tiny $spacing--small;
     border-radius: $border-radius;
     border-style: none;
+  }
+
+  input {
+    caret-color: $color--primary;
   }
 }
