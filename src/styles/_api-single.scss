@@ -1,0 +1,92 @@
+@import './vars';
+
+.api {
+  float: left;
+  border-radius: $border-radius;
+  margin: $spacing--medium;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  min-height: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-4px);
+  }
+
+  .api--category {
+    width: 100%;
+    background-color: $color--primary;
+    background-image: linear-gradient(to right, $color--primary, adjust-hue(lighten($color--primary, 10%), 10%));
+    height: 5px;
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  .api--name .name {
+    margin: 0;
+    margin-top: $spacing--tiny;
+    font-size: 1.5em;
+
+    a {
+      text-decoration: none;
+      color: $color--primary;
+
+      &:visited {
+        color: $color--primary;
+      }
+
+      &:hover,
+      &:focus {
+        color: $color--primary__darkened;
+      }
+    }
+  }
+
+  .api--info {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    color: $color--text__light;
+    background-color: $color--background__faded;
+    border-radius: 0 0 $border-radius $border-radius;
+    padding: $spacing--small 0;
+
+    .info-group {
+      margin: $spacing--tiny;
+      display: flex;
+      flex-flow: column nowrap;
+      opacity: 0.9;
+
+      .info-value {
+        font-weight: bold;
+        color: $color--text__light;
+        margin-top: $spacing--tiny;
+      }
+    }
+  }
+
+  >* {
+    padding: 0 $spacing--small;
+  }
+
+  @media screen and (max-width:300px) {
+    margin: $spacing--tiny;
+  }
+}
+
+@supports not(display:flex) {
+  .api {
+    min-width: 250px;
+  }
+}
+
+@supports(display:flex) {
+  .api {
+    flex-grow: 1;
+    flex-basis: 300px;
+  }
+}

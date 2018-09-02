@@ -1,0 +1,157 @@
+@import './_reset';
+@import './vars';
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  // width:100vw;
+  // height:100vh;
+}
+
+#app,
+.main {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@supports not(display:flex) {
+  .main {
+    .main-menu {
+      min-width: 300px;
+    }
+  }
+
+  @media screen and(max-width:650px) {
+    .main {
+      .main-menu {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+@supports(display:flex) {
+  .main {
+    display: flex;
+    flex-flow: row wrap;
+
+    &>* {
+      flex-grow: 1;
+    }
+
+    .api-list {
+      flex-grow: 3;
+    }
+
+    // .main-menu {
+    //   // max-width: 300px;
+    // }
+  }
+
+  @media screen and (max-width:650px) {
+    .main {
+      flex-flow: column nowrap;
+
+      .main-menu {
+        max-width: none;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+@supports(display:grid) {
+  .main {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 400px 1fr;
+    grid-template-areas: 'main-menu api-list'
+      'main-menu api-list';
+    grid-gap: 0;
+
+    .main-menu {
+      grid-area: main-menu;
+    }
+
+    .api-list {
+      grid-area: api-list;
+    }
+  }
+
+  @media screen and(max-width:650px) {
+    .main {
+      display: block;
+      grid-template-areas: 'main-menu main-menu'
+        'api-list api-list';
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main {
+    overflow: auto;
+
+    .api-list {
+      height: auto;
+    }
+  }
+}
+
+/*
+===================================
+    BOOKMARK: Buttons
+===================================
+*/
+button,
+a.button {
+  border-style: none;
+  padding: $spacing--small $spacing--medium;
+  border-radius: $border-radius;
+  background-color: $color--accent;
+  color: $color--text__dark;
+  font-weight: bold;
+  transition: .2s ease-out;
+
+  &:hover,
+  &:focus {
+    background-color: $color--accent__darkened;
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/*
+===================================
+    BOOKMARK: Forms
+===================================
+*/
+.form-group {
+  margin-bottom: $spacing--medium;
+
+  &>* {
+    display: block;
+    margin: $spacing--tiny;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    background-color: $color--text__dark;
+  }
+
+  input,
+  select {
+    padding: $spacing--tiny $spacing--small;
+    border-radius: $border-radius;
+    border-style: none;
+  }
+}

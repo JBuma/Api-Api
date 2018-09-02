@@ -1,0 +1,19 @@
+@import './vars.scss';
+
+.api-list {
+  float: left;
+  padding: $spacing--medium;
+  overflow-y: auto;
+  background-color: rgb(229, 227, 241);
+
+  @supports(display: flex) {
+    .list {
+      display: flex;
+      flex-flow: row wrap;
+    }
+  }
+
+  @media screen and (max-width:300px) {
+    padding: $spacing--tiny;
+  }
+}
