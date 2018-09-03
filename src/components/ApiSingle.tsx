@@ -18,11 +18,11 @@ export default class ApiSingle extends Component<ApiProps, {}> {
 	}
 	public render() {
 		return (
-			<div className="api">
+			<article className="api">
 				<div className={'api--category ' + this.convertToClassname(this.props.category)} />
-				<div className="api--name">
+				<header className="api--name">
 					<h3 className="name" ><a href={this.props.link}>{this.props.name}</a></h3>
-				</div>
+				</header>
 				<div className="api--description">
 					<p className="description">{this.props.description}</p>
 				</div>
@@ -44,7 +44,7 @@ export default class ApiSingle extends Component<ApiProps, {}> {
 						<span className="info-value">{this.props.category}</span>
 					</p>
 				</div>
-			</div>
+			</article>
 		);
 	}
 }

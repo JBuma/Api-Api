@@ -65,17 +65,27 @@ export default class MainMenu extends Component<MainMenuProps, MainMenuState> {
 	}
 	public render() {
 		return (
-			<menu className="main-menu">
-				<h1>Menu</h1>
-				<div class="form">
-					<StringSelector title="Title" queryOption="title" onChange={this.handleParameterChange} />
-					<StringSelector title="Description" queryOption="description" onChange={this.handleParameterChange} />
+			<menu className="main-menu" id="main-menu">
+				<h1>The Api Api</h1>
+				<form class="form">
+					{/* TODO: Make string searching search both title and description */}
+					<StringSelector
+						title="Title"
+						queryOption="title"
+						onChange={this.handleParameterChange}
+					/>
+					<StringSelector
+						title="Description"
+						queryOption="description"
+						onChange={this.handleParameterChange}
+					/>
+					{/* TODO: Make the following components one component with different props */}
 					<CategorySelector queryOption="category" onChange={this.handleParameterChange} />
 					<AuthSelector queryOption="auth" onChange={this.handleParameterChange} />
 					<CorsSelector queryOption="cors" onChange={this.handleParameterChange} />
 					<HttpsSelector queryOption="https" onChange={this.handleParameterChange} />
 					<button onClick={this.searchApis} id="search-apis">Search</button>
-				</div>
+				</form>
 			</menu>
 		);
 	}

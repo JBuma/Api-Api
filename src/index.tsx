@@ -1,6 +1,7 @@
 import { h, Component, render } from 'preact';
 import MainMenu from './components/MainMenu';
 import { APIList, API } from './components/APIList';
+import ScrollToTop from './components/ScrollToTop';
 
 import './styles/index.scss';
 
@@ -39,7 +40,6 @@ export default class Index extends Component<{}, MainState> {
 		this.fetchApis(this.baseUrl + queryString);
 	}
 	private fetchApis = (url: string) => {
-		// console.log(url);
 		fetch(url)
 			.then((res) => {
 				if (res.status === 200) {
@@ -47,13 +47,6 @@ export default class Index extends Component<{}, MainState> {
 				}
 			})
 			.then((res) => {
-				console.log('Response:', res);
-				// this.setState({
-				// 	Apis: {
-				// 		count: 0,
-				// 		entries: [],
-				// 	},
-				// });
 				this.setState({
 					Apis: res,
 				});
@@ -63,13 +56,14 @@ export default class Index extends Component<{}, MainState> {
 			});
 	}
 	public componentDidMount() {
-		// this.fetchApis(this.baseUrl + 'entries');
+		this.fetchApis(this.baseUrl + 'entries');
 	}
 	public render() {
 		return (
 			<main className="main">
 				<MainMenu QueryStringCallback={this.queryStringCallback} />
 				<APIList ApiList={this.state.Apis} />
+				<ScrollToTop topSelector="main-menu" />
 			</main>
 		);
 	}

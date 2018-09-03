@@ -27,7 +27,7 @@ body {
     }
   }
 
-  @media screen and(max-width:650px) {
+  @media screen and(max-width:$mobile-width) {
     .main {
       .main-menu {
         width: 100%;
@@ -58,7 +58,7 @@ body {
     // align-items: center;
   }
 
-  @media screen and (max-width:650px) {
+  @media screen and (max-width:$mobile-width) {
     .main {
       flex-flow: column nowrap;
 
@@ -109,7 +109,7 @@ body {
     }
   }
 
-  @media screen and(max-width:650px) {
+  @media screen and(max-width:$mobile-width) {
     .main {
       display: block;
       grid-template-areas: 'main-menu main-menu'
@@ -118,7 +118,7 @@ body {
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: $mobile-width) {
   .main {
     overflow: auto;
 

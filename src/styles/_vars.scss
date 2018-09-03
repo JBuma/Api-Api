@@ -9,22 +9,19 @@ $spacing--small: $spacing--tiny * $spacing--modifier;
 $spacing--medium: $spacing--small * $spacing--modifier;
 $spacing--large: $spacing--medium * $spacing--modifier;
 $spacing--huge: $spacing--large * $spacing--modifier;
-
 /*
 ===================================
 	Color
 ===================================
 */
-
 $color--primary: rgb(83, 82, 163);
 $color--accent: rgb(77, 209, 106);
-$color--accent__darkened:(adjust-hue(darken($color--accent, 10%),10%));
-$color--primary__darkened: adjust-hue(darken($color--primary, 10%),10%);
+$color--accent__darkened:(adjust-hue(darken($color--accent, 10%), 10%));
+$color--primary__darkened: adjust-hue(darken($color--primary, 10%), 10%);
 $color--text__faded: rgb(90, 126, 111);
 $color--text__light:#222f22;
 $color--text__dark: #fefefe;
 $color--background__faded: #f1f1f1;
-
-
-
 $border-radius: 6px;
+// Responsive
+$mobile-width:650px;

@@ -22,14 +22,14 @@ export default class HttpsSelector extends Component<HttpsSelectorProps, HttpsSe
 	public render() {
 		return (
 			<div className="form-group">
-				<label for="cors-select">{this.props.title}</label>
+				<label for={this.props.queryOption + '-selector'}>{this.props.title}</label>
 				<input
 					onChange={(e: Event) => {
 						this.props.onChange(e, this.props.queryOption);
 						this.handleChange(e);
 					}}
 					type="text"
-					name="string-selector"
+					name={this.props.queryOption + '-select'}
 				/>
 			</div>
 		);

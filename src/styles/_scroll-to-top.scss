@@ -1,0 +1,19 @@
+@import "./vars";
+
+#scroll-to-top {
+  border: none;
+  //   min-width: 32px;
+  //   min-height: 32px;
+  padding: 16px;
+  //   width: 2vw;
+  //   height: 2vw;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  text-align: center;
+  line-height: 6px;
+
+  @media screen and (min-width: $mobile-width) {
+    display: none;
+  }
+}
