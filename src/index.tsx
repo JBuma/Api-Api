@@ -2,8 +2,18 @@ import { h, Component, render } from 'preact';
 import MainMenu from './components/MainMenu';
 import { APIList, API } from './components/APIList';
 import ScrollToTop from './components/ScrollToTop';
+import Modal from './components/Modal';
 
 import './styles/index.scss';
+
+const infoModalText =
+	(
+		<p>
+			This site is made with <a href="https://preactjs.com/">Preact</a>,
+			using the <a href="https://github.com/toddmotto/public-apis">API of public APIs</a>.
+	<br />
+			Source code is available <a href="https://github.com/JBuma/Api-Api">here</a>.
+	</p>);
 
 interface MainState {
 	// queryString: string;
@@ -12,8 +22,10 @@ interface MainState {
 
 export default class Index extends Component<{}, MainState> {
 	private baseUrl: string = 'https://api.publicapis.org/';
+	public modal: any;
 	constructor(props: {}) {
 		super(props);
+		this.modal = null;
 		// Placeholders TODO: remove
 		const entries = [];
 		const count = 20;
@@ -36,9 +48,13 @@ export default class Index extends Component<{}, MainState> {
 			},
 		};
 	}
+	public toggleModal = () => {
+		this.modal.toggleModal();
+	}
 	private queryStringCallback = (queryString: string) => {
 		this.fetchApis(this.baseUrl + queryString);
 	}
+
 	private fetchApis = (url: string) => {
 		fetch(url)
 			.then((res) => {
@@ -61,7 +77,8 @@ export default class Index extends Component<{}, MainState> {
 	public render() {
 		return (
 			<main className="main">
-				<MainMenu QueryStringCallback={this.queryStringCallback} />
+				<Modal onRef={(ref) => (this.modal = ref)} title="Info" content={infoModalText} />
+				<MainMenu openInfoModal={this.toggleModal} QueryStringCallback={this.queryStringCallback} />
 				<APIList ApiList={this.state.Apis} />
 				<ScrollToTop topSelector="main-menu" />
 			</main>

@@ -9,8 +9,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  // width:100vw;
-  // height:100vh;
 }
 
 #app,
@@ -155,6 +153,24 @@ a.button {
     background-color: $color--accent__darkened;
     transform: translateY(-2px);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &.light {
+    color: $color--text__dark;
+    background-color: transparent;
+    border-color: $color--text__dark;
+    border: 2px solid $color--text__dark;
+
+    &:hover,
+    &:focus {
+      background-color: $color--text__dark;
+      color: $color--primary;
+    }
+  }
+
+  &.small {
+    padding: $spacing--small;
+    line-height: $spacing--small;
   }
 }
 

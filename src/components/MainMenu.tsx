@@ -9,6 +9,7 @@ import '../styles/_main-menu.scss';
 
 interface MainMenuProps {
 	QueryStringCallback: (queryString: string) => void;
+	openInfoModal: () => void;
 }
 interface QueryOptions extends Object {
 	category: string;
@@ -84,8 +85,9 @@ export default class MainMenu extends Component<MainMenuProps, MainMenuState> {
 					<AuthSelector queryOption="auth" onChange={this.handleParameterChange} />
 					<CorsSelector queryOption="cors" onChange={this.handleParameterChange} />
 					<HttpsSelector queryOption="https" onChange={this.handleParameterChange} />
-					<button onClick={this.searchApis} id="search-apis">Search</button>
+					<button type="button" onClick={this.searchApis} id="search-apis">Search</button>
 				</form>
+				<small className="modal link" onClick={this.props.openInfoModal}>Info</small>
 			</menu>
 		);
 	}
